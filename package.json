@@ -1,0 +1,70 @@
+{
+  "name": "react-easy-form-state",
+  "version": "0.1.4",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production --display-modules",
+    "start": "webpack-dev-server --config webpack.dev-server.config.js --mode development"
+  },
+  "author": "radMonteiro",
+  "license": "MIT",
+  "repository": "radMonteiro/react-easy-form-state",
+  "source": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^3.8.3",
+    "ts-loader": "^6.2.2",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "react-scripts": "^3.4.1",
+    "react-bootstrap": "^1.0.1",
+    "react-intl": "^4.3.1",
+    "jquery": "^3.4.1",
+    "validator": "^13.0.0",
+    "react-datepicker": "^2.14.1",
+    "react-text-mask": "^5.4.3",
+    "text-mask-addons": "^3.8.0",
+    "react-hot-loader": "^4.12.21",
+    "html-loader": "^1.1.0",
+    "webpack-node-externals": "^1.7.2",
+    "font-awesome": "^4.7.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "react-datepicker": "^2.14.1",
+    "react-text-mask": "^5.4.3",
+    "text-mask-addons": "^3.8.0",
+    "validator": "^13.0.0",
+    "react-intl": "^4.3.1",
+    "react-bootstrap": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "prop-types": "^15.7.2"
+  }
+}

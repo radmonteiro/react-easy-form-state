@@ -1,0 +1,29 @@
+{
+  "locale": "en",
+  "completeLocale": "en_GB",
+  "dateFormat": "dd/mm/yyyy",
+
+  "DummyApp" : {
+    "prop1" : "example1",
+    "prop2": "example2"
+  },
+
+  "StyleguideApp" : {
+    "catalogMaritalStatus" : [
+      {"id": "single", "text": "Single"},
+      {"id": "married", "text": "Married"}
+    ],
+    "materialTableData": [
+      {
+        "description": "description 1",
+        "value": "10"
+      },
+      {
+        "description": "description 2",
+        "value": "100"
+      }
+    ]
+  }
+
+
+}
