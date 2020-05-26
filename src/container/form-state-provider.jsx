@@ -42,7 +42,7 @@ export const FormStateProvider = ({
                                       validations,
                                       onSubmit,
                                       catalogs,
-                                        hideSubmitAlerts,
+                                      hideSubmitAlerts,
                                       locale,
                                       messages,
                                       dateFormat,
@@ -116,7 +116,6 @@ export const FormStateProvider = ({
     React.useEffect(() => {
 
         if(prevSubmitted && ! submitted) {
-            debugger
             if(validationErrors.message === '' && Object.keys(validationErrors.fields).length === 0) {
                 setAlert(<AlertSuccess message={successMessage} /> );
             }
@@ -140,10 +139,6 @@ export const FormStateProvider = ({
 
 
 
-    /**
-     * Função para fazer guardar o valor da property 'name' em state
-     * @param name - property
-     */
     const setPropState = name => value => {
         setState(prevState => {
             return {

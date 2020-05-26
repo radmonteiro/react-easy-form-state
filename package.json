@@ -2,6 +2,17 @@
   "name": "react-easy-form-state",
   "version": "0.1.4",
   "description": "",
+  "keywords": [
+    "react",
+    "form-state",
+    "react-form",
+    "react-forms",
+    "react-form-validation",
+    "react-form-validator",
+    "react-state-management",
+    "easy form",
+    "easy state"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
