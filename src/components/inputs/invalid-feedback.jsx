@@ -1,6 +1,6 @@
 import React from 'react';
 
 
-export const InvalidFeedback = ({validation}) => {
-    return <span className="invalid-feedback d-block"> {validation ? validation.errorMessage : ''}</span>
-};
+export const InvalidFeedback = ( {validation} ) =>
+    <span className="invalid-feedback d-block"> {validation ? validation.errorMessage : ''}</span>
+
