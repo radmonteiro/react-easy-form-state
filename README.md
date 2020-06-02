@@ -1,8 +1,10 @@
 
 With react-easy-form-state you can easily create a form with everything you need:
+* input components (text, select, datepicker, checkbox)
 * field validation
 * internationalization
-* server submition with response handling and errors handling 
+* server submission with response handling and errors handling 
+* loading overlay 
  
 
 Example with Spring Boot server in https://github.com/radmonteiro/ReactEasyFormStateExample
@@ -28,15 +30,16 @@ Simple form example in https://codesandbox.io/s/react-easy-form-state-example-br
 | Property           | Type     | Description                                                                                                                                                                                                                                                                                       |
 | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | initialState       | { }      | If you want to give intial values for the fields.                                                                                                                                                                                                                                                 |
-| catalogs           | { }      | Object with catalogs for **SelectInput** and 
-**SelectRadioInput**.                                                                                                                                                                                                                                |
+| catalogs           | { }      | Object with catalogs for **SelectInput** and                                                                                                                                                                                                                                                      |
 | messages           | { }      | Object for internationalization.                                                                                                                                                                                                                                                                  |
 | locale             | string   | Locale to select the **messages** we want.                                                                                                                                                                                                                                                        |
 | validations        | [ ]      | Validation for 'validator' dependency.                                                                                                                                                                                                                                                            |
 | urlSubmit          | string   | Url to submit form data.                                                                                                                                                                                                                                                                          |
 | dateFormat         | string   | Date format for datepickers (default is 'yyyy-MM-dd').                                                                                                                                                                                                                                            |
 | successMessage     | string   | Alert message for valid submission (default is 'Success').                                                                                                                                                                                                                                        |
+| loaderMsg          | string   | Message for loader (default is 'Submitting').                                                                                                                                                                                                                                                                               |
 | hideSubmitAlerts   | boolean  | If you do not want alerts with success or error messages after submit.                                                                                                                                                                                                                            |
+| hideLoader         | boolean  | If you do not want an overlay loader.                                                                                                                                                                                                                                                             |
 | handleNewState     | function | If you need to handle the state after server response.                                                                                                                                                                                                                                            |
 | handleServerErrors | function | If your server responds with errors in a different format than it is handled by this container, you should provide this function to convert your server errors in an object with the structure { message: \<STRING>, fields: {invalid: \<BOOLEAN>, focus: \<BOOLEAN>, errorMessage: \<STRING>} }. |
 | onSubmit           | function | Overrides the **FormStateProvider** onSubmit function.                                                                                                                                                                                                                                            |
@@ -257,6 +260,11 @@ handleServerErrorsDefault = data => {
 | name     | string | Input name, this will be the property name in the state. |
 | value    | any    | Input value form data.                                   |
 
+
+
+# Field Validation
+
+For validation it is used the 'validator' dependency, so you can use 'validator' methods like 'isEmpty', or you can implement your own methods. See the example below.
 
 
 # Example

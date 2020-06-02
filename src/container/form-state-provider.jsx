@@ -4,6 +4,7 @@ import { submitForm } from './submit'
 import {AlertError, AlertSuccess} from '../components/alerts.jsx'
 import { usePrevious } from '../components/hooks.jsx'
 import {IntlProviderWrapper} from './intl-provider-wrapper.jsx';
+import {Loader} from './loader.jsx';
 
 const FormStateContainerContext = React.createContext({})
 
@@ -42,7 +43,9 @@ export const FormStateProvider = ({
                                       validations,
                                       onSubmit,
                                       catalogs,
-                                        hideSubmitAlerts,
+                                      hideSubmitAlerts,
+                                      hideLoader,
+                                      loaderMsg,
                                       locale,
                                       messages,
                                       dateFormat,
@@ -116,7 +119,6 @@ export const FormStateProvider = ({
     React.useEffect(() => {
 
         if(prevSubmitted && ! submitted) {
-            debugger
             if(validationErrors.message === '' && Object.keys(validationErrors.fields).length === 0) {
                 setAlert(<AlertSuccess message={successMessage} /> );
             }
@@ -140,10 +142,6 @@ export const FormStateProvider = ({
 
 
 
-    /**
-     * Função para fazer guardar o valor da property 'name' em state
-     * @param name - property
-     */
     const setPropState = name => value => {
         setState(prevState => {
             return {
@@ -153,6 +151,7 @@ export const FormStateProvider = ({
         });
     }
 
+    const LoaderComponent = children => <Loader active={submitted} text={'Submitting...'}> {children} </Loader>;
 
     return (
         <FormStateContainerContext.Provider value={ { containerState: state,
@@ -169,13 +168,24 @@ export const FormStateProvider = ({
                 wrapper={children => <IntlProviderWrapper locale={locale} messages={messages}> {children} </IntlProviderWrapper> }
             >
 
-                {! hideSubmitAlerts && alert}
 
-                <form onSubmit={onSubmit}>
+                <ConditionalWrapper
+                    condition={ ! hideLoader}
+                    wrapper={children => <Loader active={submitted} text={loaderMsg ?? 'Submitting...'}> {children} </Loader> }
+                >
 
-                    {children}
 
-                </form>
+                    {! hideSubmitAlerts && alert}
+
+                    <form onSubmit={onSubmit}>
+
+                        {children}
+
+                    </form>
+
+
+
+                </ConditionalWrapper>
 
 
             </ConditionalWrapper>
