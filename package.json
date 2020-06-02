@@ -74,8 +74,5 @@
     "react-intl": "^4.3.1",
     "react-bootstrap": "^1.0.1",
     "react-loading-overlay": "^1.0.1"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0"
   }
 }
