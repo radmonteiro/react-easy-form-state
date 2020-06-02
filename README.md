@@ -1,8 +1,10 @@
 
 With react-easy-form-state you can easily create a form with everything you need:
+* input components (text, select, datepicker, checkbox)
 * field validation
 * internationalization
-* server submition with response handling and errors handling 
+* server submission with response handling and errors handling 
+* loading overlay 
  
 
 Example with Spring Boot server in https://github.com/radmonteiro/ReactEasyFormStateExample
@@ -35,7 +37,7 @@ Simple form example in https://codesandbox.io/s/react-easy-form-state-example-br
 | urlSubmit          | string   | Url to submit form data.                                                                                                                                                                                                                                                                          |
 | dateFormat         | string   | Date format for datepickers (default is 'yyyy-MM-dd').                                                                                                                                                                                                                                            |
 | successMessage     | string   | Alert message for valid submission (default is 'Success').                                                                                                                                                                                                                                        |
-| loaderMsg          | string   | Message for loader.                                                                                                                                                                                                                                                                               |
+| loaderMsg          | string   | Message for loader (default is 'Submitting').                                                                                                                                                                                                                                                                               |
 | hideSubmitAlerts   | boolean  | If you do not want alerts with success or error messages after submit.                                                                                                                                                                                                                            |
 | hideLoader         | boolean  | If you do not want an overlay loader.                                                                                                                                                                                                                                                             |
 | handleNewState     | function | If you need to handle the state after server response.                                                                                                                                                                                                                                            |
@@ -258,6 +260,11 @@ handleServerErrorsDefault = data => {
 | name     | string | Input name, this will be the property name in the state. |
 | value    | any    | Input value form data.                                   |
 
+
+
+# Field Validation
+
+For validation it is used the 'validator' dependency, so you can use 'validator' methods like 'isEmpty', or you can implement your own methods. See the example below.
 
 
 # Example
