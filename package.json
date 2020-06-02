@@ -1,6 +1,6 @@
 {
   "name": "react-easy-form-state",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "keywords": [
     "react",
@@ -76,7 +76,6 @@
     "react-loading-overlay": "^1.0.1"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "prop-types": "^15.7.2"
+    "react": "^16.8.0"
   }
 }
