@@ -42,12 +42,13 @@ Simple form example in https://codesandbox.io/s/react-easy-form-state-example-br
 | hideLoader         | boolean  | If you do not want an overlay loader.                                                                                                                                                                                                                                                             |
 | handleNewState     | function | If you need to handle the state after server response.                                                                                                                                                                                                                                            |
 | handleServerErrors | function | If your server responds with errors in a different format than it is handled by this container, you should provide this function to convert your server errors in an object with the structure { message: \<STRING>, fields: {invalid: \<BOOLEAN>, focus: \<BOOLEAN>, errorMessage: \<STRING>} }. |
+| handleResponseData           | function | Overrides the **handleResponseData** default function. This is the function that will handle data response from server. The default function calls **handleNewState** and **handleServerErrors**, so if you redefine this function, the **handleNewState** and **handleServerErrors** functions will not be called.                                                                                                                                                                                                                                            |
 | onSubmit           | function | Overrides the **FormStateProvider** onSubmit function.                                                                                                                                                                                                                                            |
 
 Properties **messages** and **locale** are optional. You don't need to use these if you do not want internationalization, then when you call Input components from this lib you need to use **labelText** and **tooltipText**. If you want internationalization use **label** and **tooltip**.
 
 The default **handleServerErrors** function can read the errors in server response if the data object has the following structure: 
-```json
+```
 {
     errors: {
         errorMessage : <STRING>, 
@@ -60,7 +61,7 @@ The default **handleServerErrors** function can read the errors in server respon
 ```
 
 For example: 
-```json
+```
 {
     errors: {
         errorMessage : 'Please correct field errors', 
@@ -71,7 +72,10 @@ For example:
     }
 }
 ```
-handleServerErrors default function:
+
+
+### Submission default handler functions
+#### handleServerErrors:
 ```react
 handleServerErrorsDefault = data => {
 
@@ -109,6 +113,42 @@ handleServerErrorsDefault = data => {
     };
 
 }
+```
+
+
+####handleResponseData:
+```react
+
+handleResponseDataDefault = ( {setState, setValidationErrors, afterHandleResponse, handleServerErrors} ) => data => {
+
+    handleServerErrors = handleServerErrors ?? handleServerErrorsDefault;
+
+    if (data.urlRedirect) {
+        window.location.href = data.urlRedirect;
+        return;
+    }
+
+    let serverErrors = handleServerErrors(data);
+
+    setValidationErrors(serverErrors);
+
+    /**
+     * Replace state with values sent from server
+     */
+    setState(prevState => {
+        let newState = {
+            ...prevState,
+            ...data
+        }
+
+        afterHandleResponse(newState);
+
+        return newState;
+
+    });
+
+};
+
 ```
 
  

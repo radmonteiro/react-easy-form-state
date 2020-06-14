@@ -50,6 +50,7 @@ export const FormStateProvider = ({
                                       messages,
                                       dateFormat,
                                       successMessage,
+                                      handleResponseData,
                                       handleServerErrors,
                                       children
                                   }) => {
@@ -76,13 +77,14 @@ export const FormStateProvider = ({
 
     onSubmit = onSubmit ?? ( (event) => {
 
+        setSubmitted(true);
+
         /*
          * Prevents page refresh
          */
         event.preventDefault();
 
 
-        setSubmitted(true);
 
         /**
          * Validate form
@@ -111,7 +113,7 @@ export const FormStateProvider = ({
             handleNewState(state);
         }
 
-        submitForm({urlSubmit, form: event.target, setState, setValidationErrors, afterHandleResponse, handleServerErrors});
+        submitForm({urlSubmit, form: event.target, setState, setValidationErrors, handleResponseData, afterHandleResponse, handleServerErrors});
 
     });
 
@@ -151,7 +153,6 @@ export const FormStateProvider = ({
         });
     }
 
-    const LoaderComponent = children => <Loader active={submitted} text={'Submitting...'}> {children} </Loader>;
 
     return (
         <FormStateContainerContext.Provider value={ { containerState: state,
