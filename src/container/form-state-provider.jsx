@@ -17,7 +17,7 @@ const createDatePack = dateFormat => {
     let mask = [];
 
     for (let i = 0; i < dateFormat.length; i++) {
-        if (dateFormat.charAt(i).match(/[^0-9a-z]/i)) {
+        if (dateFormat.charAt(i).match(/[^0-9a-z]/i) == null) {
             mask.push(/\d/);
         }
         else {
